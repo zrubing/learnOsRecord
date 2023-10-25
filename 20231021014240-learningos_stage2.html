@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-10-25 Wed 23:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LearningOs-stage2</title>
+<meta name="author" content="John Doe" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">LearningOs-stage2</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga6750d5">1. 预习</a>
+<ul>
+<li><a href="#org661139e">1.1. 2023-10-21</a>
+<ul>
+<li><a href="#orgc06eadf">1.1.1. <span class="todo TODO">TODO</span> 2.7.2边界检查的简单方法</a></li>
+</ul>
+</li>
+<li><a href="#org2e21713">1.2. 2023-10-22</a>
+<ul>
+<li><a href="#org6d0e531">1.2.1. <span class="todo TODO">TODO</span> 这里可以反复回来看看</a></li>
+<li><a href="#org3b75470">1.2.2. 编译qemu-7.0.0失败</a></li>
+</ul>
+</li>
+<li><a href="#org02451dc">1.3. 2023-10-23</a>
+<ul>
+<li><a href="#org5b678f6">1.3.1. <span class="todo TODO">TODO</span> 代码提示</a></li>
+</ul>
+</li>
+<li><a href="#org951864f">1.4. 2023-10-24</a></li>
+<li><a href="#org00f7825">1.5. 2023-10-25</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="https://github.com/LearningOS/rust-based-os-comp2023/blob/main/scheduling-2.md">https://github.com/LearningOS/rust-based-os-comp2023/blob/main/scheduling-2.md</a>
+</p>
+
+
+<p>
+<a href="https://github.com/LearningOS/2023s-rcore-zrubing">https://github.com/LearningOS/2023s-rcore-zrubing</a>
+<a href="https://github.com/LearningOS/2023a-rcore-zrubing">https://github.com/LearningOS/2023a-rcore-zrubing</a>
+</p>
+<div id="outline-container-orga6750d5" class="outline-2">
+<h2 id="orga6750d5"><span class="section-number-2">1.</span> 预习</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="https://learningos.cn/rCore-Tutorial-Guide-2023A">https://learningos.cn/rCore-Tutorial-Guide-2023A</a>
+</p>
+
+<p>
+硬件软件接口RISC-V版
+</p>
+</div>
+<div id="outline-container-org661139e" class="outline-3">
+<h3 id="org661139e"><span class="section-number-3">1.1.</span> 2023-10-21</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+学习了risk-v的，R型指令，I型指令与S型指令，S型还不是很理解
+</p>
+
+<p>
+学习逻辑指令，决策指令
+</p>
+
+<p>
+计算机过程
+</p>
+
+<p>
+寄存器
+</p>
+
+<p>
+嵌套过程
+</p>
+</div>
+<div id="outline-container-orgc06eadf" class="outline-4">
+<h4 id="orgc06eadf"><span class="section-number-4">1.1.1.</span> <span class="todo TODO">TODO</span> 2.7.2边界检查的简单方法</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+为啥将有符号数当成无符号数，可以低成本检查是否 0&lt;=x&lt;y
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2e21713" class="outline-3">
+<h3 id="org2e21713"><span class="section-number-3">1.2.</span> 2023-10-22</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+jal x1,A 是什么来着，忘了
+回顾一下，jal x1，A 代表跳转A的同时，将下一条指令的地址保存到寄存器 x1
+</p>
+</div>
+<div id="outline-container-org6d0e531" class="outline-4">
+<h4 id="org6d0e531"><span class="section-number-4">1.2.1.</span> <span class="todo TODO">TODO</span> 这里可以反复回来看看</h4>
+</div>
+
+<div id="outline-container-org3b75470" class="outline-4">
+<h4 id="org3b75470"><span class="section-number-4">1.2.2.</span> 编译qemu-7.0.0失败</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+下面可以解决，不知道对不对
+<a href="https://patchew.org/QEMU/20220527190658.169439-1-i@hexchain.org/">https://patchew.org/QEMU/20220527190658.169439-1-i@hexchain.org/</a>
+</p>
+
+<p>
+完成第零章，环境配置
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org02451dc" class="outline-3">
+<h3 id="org02451dc"><span class="section-number-3">1.3.</span> 2023-10-23</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+学习了编译时需要的3元组，:
+(目标平台的cpu指令集，操作系统（来了解用哪些系统调用）,标准运行时库)
+</p>
+
+<p>
+可以回来看看，退出函数里的系统调用和汇编函数
+</p>
+
+<p>
+linker脚本有机会可以查一下相关资料
+</p>
+
+<p>
+文章里是怎么通过readobj，分析二进制程序入口地址不对的呢
+</p>
+
+<p>
+清空内存地址这段代码可以关注下, (*mut u8).write<sub>volatile</sub>(o)
+</p>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">os/src/main.rs</span>
+<span style="color: #51afef;">fn</span> <span style="color: #c678dd;">clear_bss</span><span style="color: #51afef;">()</span> <span style="color: #51afef;">{</span>
+     <span style="color: #51afef;">extern</span> <span style="color: #98be65;">"C"</span> <span style="color: #c678dd;">{</span>
+         <span style="color: #51afef;">fn</span> <span style="color: #c678dd;">sbss</span><span style="color: #98be65;">()</span>;
+         <span style="color: #51afef;">fn</span> <span style="color: #c678dd;">ebss</span><span style="color: #98be65;">()</span>;
+     <span style="color: #c678dd;">}</span>
+     <span style="color: #c678dd;">(</span>sbss <span style="color: #51afef;">as</span> <span style="color: #ECBE7B;">usize</span>..ebss <span style="color: #51afef;">as</span> <span style="color: #ECBE7B;">usize</span><span style="color: #c678dd;">)</span>.for_each<span style="color: #c678dd;">(</span>|a| <span style="color: #98be65;">{</span>
+         <span style="color: #ECBE7B;">unsafe</span> <span style="color: #a9a1e1;">{</span> <span style="color: #51afef;">(</span>a <span style="color: #51afef;">as</span> *<span style="color: #51afef;">mut</span> <span style="color: #ECBE7B;">u8</span><span style="color: #51afef;">)</span>.write_volatile<span style="color: #51afef;">(</span><span style="color: #da8548; font-weight: bold;">0</span><span style="color: #51afef;">)</span> <span style="color: #a9a1e1;">}</span>
+     <span style="color: #98be65;">}</span><span style="color: #c678dd;">)</span>;
+<span style="color: #51afef;">}</span>
+
+</pre>
+</div>
+
+
+<p>
+看完第一章
+1.从一个用rust std标准库的程序开始，println
+</p>
+
+<p>
+对应图里的 应用程序-&gt;标准库
+</p>
+
+<p>
+2.-&gt;修改cpu目标平台为RISC-V，目标平台没有对应的rust std
+</p>
+
+<p>
+riscv64gc-unknown-none-elf，这个里面也没有对应的os平台及系统调用，就是裸机平台
+</p>
+
+<p>
+裸机平台上就只能用rust的core模块了 todo,之后回这里看看
+</p>
+
+<p>
+3.-&gt;实现一个不用std模块的print，用到core里的汇编和系统调用
+</p>
+
+<p>
+4.-&gt;实现裸机改造，涉及到qemu-system-riscv64来模拟硬件环境,
+然后bootloader(RustSBI)从硬件读取启动代码(操作系统的二进制代码)
+这里涉及到了特权等级，os位于（supervision Mode）,rustSbi位于机器特权级
+</p>
+</div>
+<div id="outline-container-org5b678f6" class="outline-4">
+<h4 id="org5b678f6"><span class="section-number-4">1.3.1.</span> <span class="todo TODO">TODO</span> 代码提示</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+rustling中可以用rustlings lsp，生成lsp相关的配置，这个os的仓库怎么整
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org951864f" class="outline-3">
+<h3 id="org951864f"><span class="section-number-3">1.4.</span> 2023-10-24</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+第二章，批处理系统
+用链接脚本user/src/linker.ld,规定用户程序内存布局，链接脚本需要继续学习下
+</p>
+
+<div class="org-src-container">
+<pre class="src src-grep">Exported grep results:
+
+user/src/linker.ld:10:        *(.text.entry)
+user/src/lib.rs:48:#[link_section = ".text.entry"]
+
+os/src/trap/context.rs:19:    pub fn app_init_context(entry: usize, sp: usize) -&gt; Self {
+os/src/linker.ld:12:        *(.text.entry)
+os/src/entry.asm:1:    .section .text.entry
+</pre>
+</div>
+
+<p>
+回去读了计算机组成与设计
+链接器的作用，1.将代码和数据段放入内存，2.决定数据和指令的标签地址，3.修正内部外部引用(2,3不是很理解)
+</p>
+
+<p>
+2.13展示了c代码指针是如何映射到RISC-V的编译器指令
+</p>
+</div>
+</div>
+<div id="outline-container-org00f7825" class="outline-3">
+<h3 id="org00f7825"><span class="section-number-3">1.5.</span> 2023-10-25</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+读了第10章，特权模式，包括U(用户模式)，S(监管模式)，M(机器模式)
+时钟中断是个啥
+</p>
+
+<p>
+了解了8个控制状态寄存器，CSR
+mstatus(machine status)保存了全局中断状态
+进一步，S模式中，sstatus也有类似的功能
+</p>
+
+<p>
+有时中断会从M模式，交给S模式来处理
+</p>
+
+<p>
+了解了下虚拟页表
+sfence.vma
+</p>
+
+<p>
+回来继续看ch2
+</p>
+
+<p>
+用户程序trap-&gt;硬件从U切换为S模式（通过status的spp字段）-&gt;附加信息放到寄存器
+-&gt;cpu跳到trap入口-&gt;处理完后sret来返回
+</p>
+
+<p>
+trap前需要用 内核栈 保存下寄存器状态
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 最后一段回来再看看</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: John Doe</p>
+<p class="date">Created: 2023-10-25 Wed 23:00</p>
+</div>
+</body>
+</html>
